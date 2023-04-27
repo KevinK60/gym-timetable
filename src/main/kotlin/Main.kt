@@ -1,7 +1,28 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import utils.ScannerInput
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main() = runMenu()
+
+fun runMenu() {
+    do {
+        when (val option = mainMenu()) {
+
+            else -> println("Invalid menu choice: $option")
+        }
+    } while (true)
 }
+fun mainMenu() = ScannerInput.readNextInt(
+    """ 
+         > -----------------------------------------------------  
+         > 1 Add a table
+         > 
+         > 
+         > 
+         > 
+         > 
+         > 
+         > 
+         > 
+         > 
+         > 
+         """.trimMargin(">")
+)
