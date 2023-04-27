@@ -1,4 +1,3 @@
 package Controllers
 
-class TableAPI {
-}
+class TableAPI

@@ -24,6 +24,5 @@ fun mainMenu() = ScannerInput.readNextInt(
          > 
          > 
          > 
-         """.trimMargin(">"))
-
-
+         """.trimMargin(">")
+)

@@ -1,5 +1,9 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.8.0'
+    id("org.jetbrains.dokka") version "1.6.10"
+
+    id 'jacoco'
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
     id 'application'
 }
 
@@ -12,10 +16,15 @@ repositories {
 
 dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.6.10")
+
 }
 
 test {
     useJUnitPlatform()
+    //report is always generated after tests run
+    finalizedBy(tasks.jacocoTestReport)
+
 }
 
 kotlin {

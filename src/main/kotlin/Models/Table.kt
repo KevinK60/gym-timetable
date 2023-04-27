@@ -1,4 +1,3 @@
 package Models
 
-class Table {
-}
+class Table
