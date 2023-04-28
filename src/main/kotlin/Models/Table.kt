@@ -35,6 +35,5 @@ data class Table(
                     ${if (sunday) "$green Sunday-Yes" else " $red Sunday"} 
       ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌$reset
             """
-
     }
 }

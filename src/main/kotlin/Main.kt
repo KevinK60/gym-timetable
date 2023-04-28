@@ -17,12 +17,14 @@ fun runMenu() {
 }
 
 fun ListNmbUsers() {
-    if(TableAPI.numberOfTables() == 0) {
+    if (TableAPI.numberOfTables() == 0) {
         println("there is noone registered in the gym")
     } else
-    println("""there is currently ${TableAPI.numberOfTables()} users registered in the gym
+        println(
+            """there is currently ${TableAPI.numberOfTables()} users registered in the gym
         
-    """.trimMargin())
+    """.trimMargin()
+        )
 }
 
 fun listAllUsers() {
@@ -50,8 +52,8 @@ fun mainMenu() = ScannerInput.readNextInt(
          >━━━━━Main Menu━━━━━━━━  
          >│ 1. Add user        │
          >│ 2. List All users  │
-         >│ 3. Get Total Users  │
-         >│                    │
+         >│ 3. Get Total Users │
+         >│                   │
          >│━━━━━━━━━━━━━━━━━━━━│
          >your option      
          """.trimMargin("   >")
