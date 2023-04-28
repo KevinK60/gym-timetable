@@ -13,7 +13,9 @@ class TableAPI {
         else users.joinToString(separator = "\n") { Table ->
             users.indexOf(Table).toString() + ": " + Table.toString()
         }
-
+    fun numberOfTables(): Int {
+        return users.size
+    }
 
 
 
