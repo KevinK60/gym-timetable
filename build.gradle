@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.8.0'
     id("org.jetbrains.dokka") version "1.6.10"
@@ -15,8 +17,12 @@ repositories {
 }
 
 dependencies {
+    implementation 'au.com.dius:pact-jvm-provider-junit5_2.11:3.5.24'
+    implementation 'au.com.dius:pact-jvm-provider-junit5:4.0.10'
+    implementation 'au.com.dius:pact-jvm-provider-junit5:4.0.10'
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.6.10")
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 
 }
 
