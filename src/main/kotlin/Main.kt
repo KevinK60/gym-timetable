@@ -1,11 +1,12 @@
 import Controllers.TableAPI
 import Models.Table
 import Models.User
+import mu.KotlinLogging
 import persistence.XMLSerializer
 import utils.ScannerInput
 import utils.ScannerInput.readNextLine
 import java.io.File
-
+private val logger = KotlinLogging.logger {}
 fun main() = runMenu()
 private val TableAPI = TableAPI(XMLSerializer(File("Tables.xml")))
 fun runMenu() {
@@ -16,13 +17,19 @@ fun runMenu() {
             3 -> getTotalUsers()
             4 -> Searchmenu()
             5 -> CountPplDay()
-            6 -> countinactivepplday()
-            7 -> save()
-            8 -> load()
+            6 -> countinactiveppl()
+            8 -> nmboftables()
+            100 -> save()
+            101 -> load()
+
 
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
+}
+
+fun ListAlltabless() {
+    println(TableAPI.listnmbtables())
 }
 
 fun CountPplDay() {
@@ -38,7 +45,7 @@ fun CountPplDay() {
     )
 }
 
-fun countinactivepplday() {
+fun countinactiveppl() {
     val day = readNextLine("Enter the day which you will see how many people are not going ")
     println(
         """
@@ -102,18 +109,23 @@ fun createUser() {
 
 fun mainMenu() = ScannerInput.readNextInt(
     """ 
-        ------------------------------
+        ---------------------------------------
         1. Add user
         2. List All users
         3. Get Total Users
-        ------------------------------
+        ---------------------------------------
         4. Search Menu
-        ------------------------------
+        ---------------------------------------
+        Gym Schedules
+        5. Count people going on specific day
+        6. Count people not going on specific day
+        7. List All gym schedules
+        8. Numbers of people going gym
         
-        
-        
-        7. Save
-        8. load
+        -----------------------------------------
+        7. Save                                                                        
+        8. load                                     
+        -----------------------------------------
          >your option      
          """.trimMargin("   >")
 )
@@ -146,7 +158,7 @@ fun Searchmenu()
     }
 
     }
-    println("there is no users registered in the gym")
+
 }
 fun searchbyname() {
     val name = readNextLine("Enter the name of the user you want to search for: ")
@@ -157,10 +169,17 @@ fun searchbyemail() {
     println(TableAPI.searchByEmail(name))
 }
 
-// 7
+// 5
+
+fun nmboftables()
+{
+    println("""${TableAPI.listnmbtables()} people are going to the gym""")
+}
+
 
 fun save() {
     try {
+        logger.info("saved to file")
         TableAPI.store()
     } catch (e: Exception) {
         System.err.println("Error writing to file: $e")
@@ -169,6 +188,7 @@ fun save() {
 // 8
 fun load() {
     try {
+        logger.info("Loading from file")
         TableAPI.load()
     } catch (e: Exception) {
         System.err.println("Error reading from file: $e")

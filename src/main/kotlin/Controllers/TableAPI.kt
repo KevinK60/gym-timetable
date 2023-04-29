@@ -55,11 +55,9 @@ fun searchByName(searchString: String) =
             .joinToString(separator = "\n") {
                     user -> users.indexOf(user).toString() + ": " + user.toString() }
 
-    fun listAllTable(): String =
-        if (tables.isEmpty()) "No users found"
-        else tables.joinToString(separator = "\n") { Table ->
-            tables.indexOf(Table).toString() + ": " + Table.toString()
-        }
+
+
+
 
 
 
