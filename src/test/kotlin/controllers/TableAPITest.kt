@@ -31,7 +31,7 @@ class TableAPITest {
     internal inner class AddUser {
         @Test
         fun `adding a new user `(){
-         val newTable =  Table("tommy",false,false,false,false,false,false,false)
+            val newTable =  Table("tommy",false,false,false,false,false,false,false)
 
 
         }
