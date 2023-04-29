@@ -19,7 +19,11 @@ class TableAPI {
     fun isValidTableIndex(index: Int, users: List<Any>): Boolean {
         return (index >= 0 && index < users.size)
     }
-
+    fun findTable(index: Int): Table? {
+        return if (isValidTableIndex(index, users)) {
+            users[index]
+        } else null
+    }
 
 
 
