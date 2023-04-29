@@ -2,31 +2,31 @@
   <list>
     <Models.User>
       <name>ke</name>
-      <email>ke</email>
-      <password>ke</password>
+      <email>kevin@gmail.com</email>
+      <password>kevin kivylius</password>
       <timetable>
-        <name>ke</name>
+        <name>kevin</name>
         <monday>true</monday>
-        <tuesday>true</tuesday>
+        <tuesday>false</tuesday>
         <wednesday>true</wednesday>
-        <thursday>true</thursday>
-        <friday>false</friday>
-        <saturday>true</saturday>
+        <thursday>false</thursday>
+        <friday>true</friday>
+        <saturday>false</saturday>
         <sunday>true</sunday>
       </timetable>
     </Models.User>
     <Models.User>
-      <name>joey</name>
-      <email>jeoy@gmail.com</email>
-      <password>joes</password>
+      <name>jeo</name>
+      <email>joe</email>
+      <password>je</password>
       <timetable>
-        <name>joess</name>
+        <name>n</name>
         <monday>true</monday>
         <tuesday>false</tuesday>
         <wednesday>true</wednesday>
-        <thursday>true</thursday>
+        <thursday>false</thursday>
         <friday>true</friday>
-        <saturday>true</saturday>
+        <saturday>false</saturday>
         <sunday>true</sunday>
       </timetable>
     </Models.User>

@@ -58,7 +58,18 @@ class TableAPI(serializerType: Serializer) {
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }
 
 
-    fun listnmbtables(): Int {
+    fun listAllTables() {
+        for (user in users) {
+            println(user.timetable?.toString())
+        }
+    }
+
+
+
+
+
+
+        fun listnmbtables(): Int {
         return tables.size
     }
 
@@ -72,7 +83,27 @@ class TableAPI(serializerType: Serializer) {
         } else null
     }
 
-    fun numberinactiveday(day: String): Int {
+    fun activedaymembers(day: String): Int {
+        return users.stream()
+            .filter { user: User ->
+                when (day) {
+                    "monday" -> user.timetable?.monday == true
+                    "tuesday" -> user.timetable?.tuesday == true
+                    "wednesday" -> user.timetable?.wednesday == true
+                    "thursday" -> user.timetable?.thursday == true
+                    "friday" -> user.timetable?.friday == true
+                    "saturday" -> user.timetable?.saturday == true
+                    "sunday" -> user.timetable?.sunday == true
+                    else -> false
+                }
+            }
+            .count()
+            .toInt()
+    }
+
+
+
+    fun inactivedaymemberss(day: String): Int {
         return users.stream()
             .filter { user: User ->
                 when (day) {
@@ -83,26 +114,6 @@ class TableAPI(serializerType: Serializer) {
                     "friday" -> user.timetable?.friday == false
                     "saturday" -> user.timetable?.saturday == false
                     "sunday" -> user.timetable?.sunday == false
-                    else -> false
-                }
-            }
-            .count()
-            .toInt()
-    }
-
-
-
-    fun numberhowinactiveday(day: String): Int {
-        return tables.stream()
-            .filter { user: Table ->
-                when (day) {
-                    "monday" -> !user.monday
-                    "tuesday" -> !user.tuesday
-                    "wednesday" -> !user.wednesday
-                    "thursday" -> !user.thursday
-                    "friday" -> !user.friday
-                    "saturday" -> !user.saturday
-                    "sunday" -> !user.sunday
                     else -> false
                 }
             }

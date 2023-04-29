@@ -18,6 +18,7 @@ fun runMenu() {
             4 -> Searchmenu()
             5 -> CountPplDay()
             6 -> countinactiveppl()
+            7 ->ListAlltabless()
             8 -> nmboftables()
             100 -> save()
             101 -> load()
@@ -29,9 +30,9 @@ fun runMenu() {
 }
 
 fun ListAlltabless() {
-    println(TableAPI.listnmbtables())
+    println(TableAPI.listAllTables())
 }
-
+// 5
 fun CountPplDay() {
 
 
@@ -39,18 +40,17 @@ fun CountPplDay() {
     println(
         """
          
-     there is currently ${TableAPI.numberinactiveday(day)} going on $day
+     there is currently ${TableAPI.activedaymembers(day)} going on $day
          
          """.trimIndent()
     )
 }
-
+// 6
 fun countinactiveppl() {
     val day = readNextLine("Enter the day which you will see how many people are not going ")
     println(
         """
-         
-     there is currently ${TableAPI.numberinactiveday(day)} going on $day
+     there is  ${TableAPI.inactivedaymemberss(day)} not going on $day
          
          """.trimIndent()
     )
