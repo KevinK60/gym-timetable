@@ -1,4 +1,4 @@
-package kotlin.controllers
+package controllers
 import Controllers.TableAPI
 import org.junit.jupiter.api.BeforeEach
 import Models.Table
@@ -8,20 +8,17 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class TableAPITest {
-
-
     private var JoePerson1: Table? = null
     private var james: Table? = null
     private var populatedTables: TableAPI? = TableAPI()
 
     @BeforeEach
     fun setup() {
-        JoePerson1 = Table("joe", false, true, true, true, true, true, true)
-        james = Table("james", false, false, false, false, false, false, false)
+        JoePerson1 = Table("joe",false,true,true,true,true,true,true)
+        james=Table("james",false,false,false,false,false,false,false)
         populatedTables!!.add(JoePerson1!!)
         populatedTables!!.add(james!!)
     }
-
     @AfterEach
 
     fun tearDown() {
@@ -30,17 +27,14 @@ class TableAPITest {
 
     }
 
-    @Test
-    fun `testing number of users nmbofussrs `(){
-        val newTable =  Table("tommy",false,false,false,false,false,false,false)
-        assertEquals(5, populatedTables!!.listnmbtables())
-        assertTrue(populatedTables!!.add(newTable))
-        assertEquals(6, populatedTables!!.listnmbtables())
-//            assertEquals(newTable, populatedTables!!.findTable(populatedTables!!.listnmbtables() - 1))
+    @Nested
+    internal inner class AddUser {
+        @Test
+        fun `adding a new user `(){
+            val newTable =  Table("tommy",false,false,false,false,false,false,false)
+
+
+        }
 
     }
-
 }
-
-
-

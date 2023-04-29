@@ -12,9 +12,21 @@ fun runMenu() {
             2 -> listAllUsers()
             3 -> ListNmbUsers()
             4 -> findUser()
+            5 -> CountPplDay()
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
+}
+
+fun CountPplDay() {
+
+
+    val day = readNextLine("Enter the day which you will see how many people are going ")
+     println("""
+         
+     there is currently ${TableAPI.numberinactiveday(day)} going on $day
+         
+         """.trimIndent())
 }
 
 fun findUser() {
@@ -59,6 +71,7 @@ fun mainMenu() = ScannerInput.readNextInt(
          >│ 2. List All users  │
          >│ 3. Get Total Users │
          >│ 4. Find User       │
+            5. count active people on day 
          >│━━━━━━━━━━━━━━━━━━━━│
          >your option      
          """.trimMargin("   >")

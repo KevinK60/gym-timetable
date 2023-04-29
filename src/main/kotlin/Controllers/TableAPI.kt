@@ -1,5 +1,6 @@
 package Controllers
 import Models.Table
+import kotlin.collections.ArrayList
 
 class TableAPI {
     private var users = ArrayList<Table>()
@@ -24,9 +25,23 @@ class TableAPI {
             users[index]
         } else null
     }
-
-
-
+    fun numberinactiveday(day: String): Int {
+        return users.stream()
+            .filter { user: Table ->
+                when (day) {
+                    "monday" -> user.monday
+                    "tuesday" -> user.tuesday
+                    "wednesday" -> user.wednesday
+                    "thursday" -> user.thursday
+                    "friday" -> user.friday
+                    "saturday" -> user.saturday
+                    "sunday" -> user.sunday
+                    else -> false
+                }
+            }
+            .count()
+            .toInt()
+    }
 }
 
 
