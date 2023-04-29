@@ -17,9 +17,8 @@ data class Table(
 
         return """
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                                 
-                  $name Gym Timetable     
-                           
+                      Weekly     
+                  $name Gym Timetable                                
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                      ${if (monday) "$green Monday -Yes" else " $red Monday"}
       ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
@@ -36,6 +35,5 @@ data class Table(
                     ${if (sunday) "$green Sunday-Yes" else " $red Sunday"} 
       ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌$reset
             """
-
     }
 }
