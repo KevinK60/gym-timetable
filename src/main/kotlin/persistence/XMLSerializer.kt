@@ -1,5 +1,6 @@
 package persistence
 
+import Models.Table
 import Models.User
 import com.thoughtworks.xstream.XStream
 import com.thoughtworks.xstream.io.xml.DomDriver
@@ -12,7 +13,7 @@ class XMLSerializer(private val file: File) : Serializer {
     @Throws(Exception::class)
     override fun read(): Any {
         val xStream = XStream(DomDriver())
-        xStream.allowTypes(arrayOf(User::class.java))
+        xStream.allowTypes(arrayOf(User::class.java, Table::class.java))
         val inputStream = xStream.createObjectInputStream(FileReader(file))
         val obj = inputStream.readObject() as Any
         inputStream.close()
