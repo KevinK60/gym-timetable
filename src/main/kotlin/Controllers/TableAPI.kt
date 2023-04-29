@@ -10,26 +10,49 @@ class TableAPI(serializerType: Serializer) {
     @Throws(Exception::class)
     fun load() {
         tables = serializer.read() as ArrayList<Table>
-
+        users = serializer.read() as ArrayList<User>
 
     }
 
     @Throws(Exception::class)
     fun store() {
         serializer.write(tables)
+        serializer.write(users)
 
     }
 
     private var tables = ArrayList<Table>()
-    fun add(index: Table): Boolean {
+    private var users = ArrayList<User>()
+
+
+    // Adds a user
+    fun addUser(user: User): Boolean {
+        return users.add(user)
+    }
+    // adds a table
+    fun addTable(index: Table): Boolean {
         return tables.add(index)
     }
+//    List all users
+
+    fun listAllUsers(): String =
+    if (users.isEmpty()) "No users found"
+    else users.joinToString(separator = "\n") { User ->
+        users.indexOf(User).toString() + ": " + User.toString()
+    }
+    // Get total users
+    fun getTotalUsers(): Int {
+        return users.size
+    }
+
 
     fun listAllTable(): String =
         if (tables.isEmpty()) "No users found"
         else tables.joinToString(separator = "\n") { Table ->
             tables.indexOf(Table).toString() + ": " + Table.toString()
         }
+
+
 
     fun listnmbtables(): Int {
         return tables.size

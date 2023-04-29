@@ -14,7 +14,7 @@ data class User(
                       Name: $name
                      Email: $email
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        $timetable
+        
         """.trimIndent()
     }
 }

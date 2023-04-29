@@ -13,7 +13,7 @@ fun runMenu() {
         when (val option = mainMenu()) {
             1 -> createUser()
             2 -> listAllUsers()
-            3 -> ListNmbUsers()
+            3 -> getTotalUsers()
             4 -> findUser()
             5 -> CountPplDay()
             6 -> countinactivepplday()
@@ -65,7 +65,7 @@ fun ListNmbUsers() {
 }
 
 fun listAllUsers() {
-    println(TableAPI.listAllTable())
+    println(TableAPI.listAllUsers())
 }
 
 
@@ -76,6 +76,7 @@ fun createUser() {
     val email = readNextLine("Enter your email: ")
     val fullName = readNextLine("Enter your full name: ")
     val user = User(name, email, fullName, null)
+    TableAPI.addUser(user)
     println("User created: $user")
     println("Would you like to add a timetable? (y/n)")
     var answer = readNextLine("Enter your answer: ")
@@ -90,7 +91,7 @@ fun createUser() {
         val sunday = readNextLine("Is Sunday a workout day for you? (y/n)") == "y"
 
         val gymSchedule = Table(timetableName, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
-        TableAPI.add(gymSchedule)
+        TableAPI.addTable(gymSchedule)
         user.timetable = gymSchedule
         println(user)
         println("Gym schedule added: $gymSchedule")
@@ -101,6 +102,15 @@ fun createUser() {
 
 fun mainMenu() = ScannerInput.readNextInt(
     """ 
+        ------------------------------
+        1. Add user
+        2. List All users
+        3. Get Total Users
+        ------------------------------
+        4. Search Menu
+        ------------------------------
+        
+        
          >━━━━━Main Menu━━━━━━━━  
          >│ 1. Add user        │
          >│ 2. List All users  │
@@ -111,6 +121,14 @@ fun mainMenu() = ScannerInput.readNextInt(
          >your option      
          """.trimMargin("   >")
 )
+
+
+// 3
+fun getTotalUsers() {
+    println("Total number of users: ${TableAPI.getTotalUsers()}")
+}
+
+// 4
 
 // 7
 

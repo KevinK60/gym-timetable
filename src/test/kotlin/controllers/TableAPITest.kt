@@ -14,8 +14,8 @@ class TableAPITest {
     fun setup() {
         JoePerson1 = Table("joe", false, true, true, true, true, true, true)
         james = Table("james", false, false, false, false, false, false, false)
-        populatedTables!!.add(JoePerson1!!)
-        populatedTables!!.add(james!!)
+        populatedTables!!.addTable(JoePerson1!!)
+        populatedTables!!.addTable(james!!)
     }
     @AfterEach
     fun tearDown() {
@@ -52,8 +52,8 @@ class TableAPITest {
         fun `saving and loading an loaded collection in XML doesn't loose data`() {
             // Storing 3 notes to the notes.XML file.
             val storingTables = TableAPI(XMLSerializer(File("tables.xml")))
-            storingTables.add(JoePerson1!!)
-            storingTables.add(james!!)
+            storingTables.addTable(JoePerson1!!)
+            storingTables.addTable(james!!)
 
             storingTables.store()
 
