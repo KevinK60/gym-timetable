@@ -14,7 +14,7 @@ fun runMenu() {
             1 -> createUser()
             2 -> listAllUsers()
             3 -> getTotalUsers()
-            4 -> findUser()
+            4 -> Searchmenu()
             5 -> CountPplDay()
             6 -> countinactivepplday()
             7 -> save()
@@ -111,13 +111,9 @@ fun mainMenu() = ScannerInput.readNextInt(
         ------------------------------
         
         
-         >━━━━━Main Menu━━━━━━━━  
-         >│ 1. Add user        │
-         >│ 2. List All users  │
-         >│ 3. Get Total Users │
-         >│ 4. Find User       │
-            5. count active people on day 
-         >│━━━━━━━━━━━━━━━━━━━━│
+        
+        7. Save
+        8. load
          >your option      
          """.trimMargin("   >")
 )
@@ -129,6 +125,37 @@ fun getTotalUsers() {
 }
 
 // 4
+fun Searchmenu()
+{
+    if(TableAPI.getTotalUsers() > 0)
+    {
+        val option = ScannerInput.readNextInt(
+            """
+        ------------------------------
+        this is the user search menu
+        1. search by name
+        2. search by email
+        ---------------------------
+        
+    """.trimIndent()
+        )
+    when (option) {
+        1 -> searchbyname()
+        2 -> searchbyemail()
+        else -> println("Invalid menu choice: $option")
+    }
+
+    }
+    println("there is no users registered in the gym")
+}
+fun searchbyname() {
+    val name = readNextLine("Enter the name of the user you want to search for: ")
+    println(TableAPI.searchByName(name))
+}
+fun searchbyemail() {
+    val name = readNextLine("Enter the name of the user you want to search for: ")
+    println(TableAPI.searchByEmail(name))
+}
 
 // 7
 

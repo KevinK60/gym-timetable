@@ -45,6 +45,15 @@ class TableAPI(serializerType: Serializer) {
         return users.size
     }
 
+// Search by Users name
+fun searchByName(searchString: String) =
+    users.filter { user -> user.name.contains(searchString, ignoreCase = true) }
+        .joinToString(separator = "\n") {
+            user -> users.indexOf(user).toString() + ": " + user.toString() }
+    fun searchByEmail(searchString: String) =
+        users.filter { user -> user.email.contains(searchString, ignoreCase = true) }
+            .joinToString(separator = "\n") {
+                    user -> users.indexOf(user).toString() + ": " + user.toString() }
 
     fun listAllTable(): String =
         if (tables.isEmpty()) "No users found"
