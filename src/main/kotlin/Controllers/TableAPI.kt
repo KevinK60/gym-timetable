@@ -77,6 +77,12 @@ class TableAPI(serializerType: Serializer) {
             .count()
             .toInt()
     }
+
+    fun findNote(index: Int): Table? {
+        return if (isValidTableIndex(index, tables)) {
+            tables[index]
+        } else null
+    }
 }
 
 

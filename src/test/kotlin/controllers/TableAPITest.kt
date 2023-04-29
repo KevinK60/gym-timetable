@@ -34,40 +34,40 @@ class TableAPITest {
 
         @Test
         fun `saving and loading an empty collection in XML doesn't crash app`() {
-            // Saving an empty notes.XML file.
-            val storingNotes = TableAPI(XMLSerializer(File("Table.xml")))
-            storingNotes.store()
+            // Saving an empty tables.XML file.
+            val storingTables = TableAPI(XMLSerializer(File("tables.xml")))
+            storingTables.store()
 
-            //Loading the empty notes.xml file into a new object
-            val loadedNotes = TableAPI(XMLSerializer(File("Table.xml")))
-            loadedNotes.load()
+            //Loading the empty tables.xml file into a new object
+            val loadedTables = TableAPI(XMLSerializer(File("tables.xml")))
+            loadedTables.load()
 
-            //Comparing the source of the notes (storingNotes) with the XML loaded notes (loadedNotes)
-            Assertions.assertEquals(0, storingNotes.listnmbtables())
-            Assertions.assertEquals(0, loadedNotes.listnmbtables())
-            assertEquals(storingNotes.listnmbtables(), loadedNotes.listnmbtables())
+            //Comparing the source of the tables (storingNotes) with the XML loaded tables (loadedTables)
+            Assertions.assertEquals(0, storingTables.listnmbtables())
+            Assertions.assertEquals(0, loadedTables.listnmbtables())
+            assertEquals(storingTables.listnmbtables(), loadedTables.listnmbtables())
         }
 
         @Test
         fun `saving and loading an loaded collection in XML doesn't loose data`() {
             // Storing 3 notes to the notes.XML file.
-            val storingNotes = TableAPI(XMLSerializer(File("Table.xml")))
-//            storingNotes.add(testApp!!)
-//            storingNotes.add(swim!!)
-//            storingNotes.add(summerHoliday!!)
-            storingNotes.store()
+            val storingTables = TableAPI(XMLSerializer(File("tables.xml")))
+            storingTables.add(JoePerson1!!)
+            storingTables.add(james!!)
 
-            //Loading notes.xml into a different collection
-            val loadedNotes = TableAPI(XMLSerializer(File("Table.xml")))
-            loadedNotes.load()
+            storingTables.store()
 
-            //Comparing the source of the notes (storingNotes) with the XML loaded notes (loadedNotes)
-            Assertions.assertEquals(3, storingNotes.listnmbtables())
-            Assertions.assertEquals(3, loadedNotes.listnmbtables())
-            assertEquals(storingNotes.listnmbtables(), loadedNotes.listnmbtables())
-//            assertEquals(storingNotes.findNote(0), loadedNotes.findNote(0))
-//            assertEquals(storingNotes.findNote(1), loadedNotes.findNote(1))
-//            assertEquals(storingNotes.findNote(2), loadedNotes.findNote(2))
+            //Loading tables.xml into a different collection
+            val loadedTables = TableAPI(XMLSerializer(File("tables.xml")))
+            loadedTables.load()
+
+            //Comparing the source of the notes (storingNotes) with the XML loaded notes (loadedTables)
+            Assertions.assertEquals(2, storingTables.listnmbtables())
+            Assertions.assertEquals(2, loadedTables.listnmbtables())
+            assertEquals(storingTables.listnmbtables(), loadedTables.listnmbtables())
+            assertEquals(storingTables.findNote(0), loadedTables.findNote(0))
+            assertEquals(storingTables.findNote(1), loadedTables.findNote(1))
+            assertEquals(storingTables.findNote(2), loadedTables.findNote(2))
         }
     }
 }
