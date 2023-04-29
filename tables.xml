@@ -15,5 +15,20 @@
         <sunday>true</sunday>
       </timetable>
     </Models.User>
+    <Models.User>
+      <name>joey</name>
+      <email>jeoy@gmail.com</email>
+      <password>joes</password>
+      <timetable>
+        <name>joess</name>
+        <monday>true</monday>
+        <tuesday>false</tuesday>
+        <wednesday>true</wednesday>
+        <thursday>true</thursday>
+        <friday>true</friday>
+        <saturday>true</saturday>
+        <sunday>true</sunday>
+      </timetable>
+    </Models.User>
   </list>
 </object-stream>
