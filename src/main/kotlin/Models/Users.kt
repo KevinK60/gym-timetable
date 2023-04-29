@@ -13,6 +13,7 @@ data class User(
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                       Name: $name
                      Email: $email
+                     Has a timetable: ${if (timetable != null) "Yes" else "No"}
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         
         """.trimIndent()
