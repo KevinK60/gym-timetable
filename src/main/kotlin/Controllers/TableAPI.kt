@@ -13,4 +13,16 @@ class TableAPI {
             users.indexOf(Table).toString() + ": " + Table.toString()
         }
 
+    fun listnmbtables(): Int {
+        return users.size
+    }
+    fun isValidTableIndex(index: Int, users: List<Any>): Boolean {
+        return (index >= 0 && index < users.size)
+    }
+
+
+
+
 }
+
+

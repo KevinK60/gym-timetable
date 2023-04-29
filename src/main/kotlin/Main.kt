@@ -11,17 +11,22 @@ fun runMenu() {
             1 -> createUser()
             2 -> listAllUsers()
             3 -> ListNmbUsers()
+            4 -> findUser()
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
 }
 
+fun findUser() {
+
+}
+
 fun ListNmbUsers() {
-    if (TableAPI.numberOfTables() == 0) {
+    if (TableAPI.listnmbtables() == 0) {
         println("there is noone registered in the gym")
     } else
         println(
-            """there is currently ${TableAPI.numberOfTables()} users registered in the gym
+            """there is currently ${TableAPI.listnmbtables()} users registered in the gym
         
     """.trimMargin()
         )
@@ -53,7 +58,7 @@ fun mainMenu() = ScannerInput.readNextInt(
          >│ 1. Add user        │
          >│ 2. List All users  │
          >│ 3. Get Total Users │
-         >│                   │
+         >│ 4. Find User       │
          >│━━━━━━━━━━━━━━━━━━━━│
          >your option      
          """.trimMargin("   >")

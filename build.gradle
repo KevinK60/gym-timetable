@@ -17,12 +17,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'au.com.dius:pact-jvm-provider-junit5_2.11:3.5.24'
-    implementation 'au.com.dius:pact-jvm-provider-junit5:4.0.10'
-    implementation 'au.com.dius:pact-jvm-provider-junit5:4.0.10'
+
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
     implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.6.10")
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.7.2')
+
+    // dependencies for logging
+    implementation("io.github.microutils:kotlin-logging:2.1.23")
+    implementation("org.slf4j:slf4j-simple:1.7.36")
+
 
 }
 
