@@ -32,8 +32,8 @@ fun CountPplDay() {
          """.trimIndent()
     )
 }
-fun countinactivepplday()
-{
+
+fun countinactivepplday() {
     val day = readNextLine("Enter the day which you will see how many people are not going ")
     println(
         """
@@ -43,6 +43,7 @@ fun countinactivepplday()
          """.trimIndent()
     )
 }
+
 fun findUser() {
 
 }
