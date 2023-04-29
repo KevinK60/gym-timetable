@@ -1,8 +1,25 @@
 package Controllers
 import Models.Table
+import Models.User
+import persistence.Serializer
 import kotlin.collections.ArrayList
 
-class TableAPI {
+class TableAPI(serializerType: Serializer) {
+
+    private var serializer: Serializer = serializerType
+    @Throws(Exception::class)
+    fun load() {
+        tables = serializer.read() as ArrayList<Table>
+
+
+    }
+
+    @Throws(Exception::class)
+    fun store() {
+        serializer.write(tables)
+
+    }
+
     private var tables = ArrayList<Table>()
     fun add(index: Table): Boolean {
         return tables.add(index)
@@ -59,6 +76,12 @@ class TableAPI {
             }
             .count()
             .toInt()
+    }
+
+    fun findNote(index: Int): Table? {
+        return if (isValidTableIndex(index, tables)) {
+            tables[index]
+        } else null
     }
 }
 

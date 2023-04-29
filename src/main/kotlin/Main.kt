@@ -1,11 +1,13 @@
 import Controllers.TableAPI
 import Models.Table
 import Models.User
+import persistence.XMLSerializer
 import utils.ScannerInput
 import utils.ScannerInput.readNextLine
+import java.io.File
 
 fun main() = runMenu()
-
+private val TableAPI = TableAPI(XMLSerializer(File("Tables.xml")))
 fun runMenu() {
     do {
         when (val option = mainMenu()) {
@@ -15,6 +17,9 @@ fun runMenu() {
             4 -> findUser()
             5 -> CountPplDay()
             6 -> countinactivepplday()
+            7 -> save()
+            8 -> load()
+
             else -> println("Invalid menu choice: $option")
         }
     } while (true)
@@ -32,8 +37,8 @@ fun CountPplDay() {
          """.trimIndent()
     )
 }
-fun countinactivepplday()
-{
+
+fun countinactivepplday() {
     val day = readNextLine("Enter the day which you will see how many people are not going ")
     println(
         """
@@ -43,6 +48,7 @@ fun countinactivepplday()
          """.trimIndent()
     )
 }
+
 fun findUser() {
 
 }
@@ -62,7 +68,7 @@ fun listAllUsers() {
     println(TableAPI.listAllTable())
 }
 
-private val TableAPI = TableAPI()
+
 
 
 fun createUser() {
@@ -105,3 +111,21 @@ fun mainMenu() = ScannerInput.readNextInt(
          >your option      
          """.trimMargin("   >")
 )
+
+// 7
+
+fun save() {
+    try {
+        TableAPI.store()
+    } catch (e: Exception) {
+        System.err.println("Error writing to file: $e")
+    }
+}
+// 8
+fun load() {
+    try {
+        TableAPI.load()
+    } catch (e: Exception) {
+        System.err.println("Error reading from file: $e")
+    }
+}

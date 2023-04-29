@@ -1,0 +1,24 @@
+<object-stream>
+  <list>
+    <Models.Table>
+      <name>joe</name>
+      <monday>false</monday>
+      <tuesday>true</tuesday>
+      <wednesday>true</wednesday>
+      <thursday>true</thursday>
+      <friday>true</friday>
+      <saturday>true</saturday>
+      <sunday>true</sunday>
+    </Models.Table>
+    <Models.Table>
+      <name>james</name>
+      <monday>false</monday>
+      <tuesday>false</tuesday>
+      <wednesday>false</wednesday>
+      <thursday>false</thursday>
+      <friday>false</friday>
+      <saturday>false</saturday>
+      <sunday>false</sunday>
+    </Models.Table>
+  </list>
+</object-stream>
