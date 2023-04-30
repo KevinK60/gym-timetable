@@ -86,8 +86,7 @@ fun listAllUsers() {
 fun createUser() {
     val name = readNextLine("Enter your name: ")
     val email = readNextLine("Enter your email: ")
-    val fullName = readNextLine("Enter your full name: ")
-    val user = User(name, email, fullName, null)
+    val user = User(name, email,  null)
     TableAPI.addUser(user)
     println("User created: $user")
     println("Would you like to add a timetable? (y/n)")
@@ -127,6 +126,7 @@ fun mainMenu() = ScannerInput.readNextInt(
         7. List All gym schedules
         8. Numbers of people going to the gym
         9- Add a gym schedule to a user
+        10 Add a gym schedule to a user
         -----------------------------------------
         7. Save                                                                        
         8. load                                     
@@ -198,7 +198,7 @@ fun load() {
     } catch (e: Exception) {
         System.err.println("Error reading from file: $e")
     }
-    // 9
+
 
 
 }

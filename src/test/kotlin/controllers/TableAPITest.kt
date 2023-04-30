@@ -20,7 +20,7 @@ class TableAPITest {
     fun setup() {
         JoePerson1 = Table("joe", false, true, true, true, true, true, true)
         jamesG = Table("james", false, false, false, false, false, false, false)
-        jamesU = User("james", "james@gmail.com", "james111", jamesG)
+        jamesU = User("james", "james@gmail.com",  jamesG)
         populatedTables!!.addUser(jamesU!!)
 
     }
@@ -89,7 +89,7 @@ class TableAPITest {
 
             assertEquals(1, populatedTables!!.getTotalUsers())
             val newTable = Table("tommy", false, false, false, false, false, false, false)
-            val jamesD = User("tommy", "tommy@gmail.com", "tommy111", newTable)
+            val jamesD = User("tommy", "tommy@gmail.com", newTable)
             populatedTables!!.addUser(jamesD)
             assertEquals(2, populatedTables!!.getTotalUsers())
         }
@@ -134,7 +134,7 @@ class TableAPITest {
             assertEquals("No users found", emptyTables!!.listAllUsers())
             assertEquals("0: ${jamesU}", populatedTables!!.listAllUsers())
             val tommyG = Table("tommy", false, false, false, false, false, true, true)
-            val tommyU = User("tommy", "james@gmail.com", "james111", tommyG)
+            val tommyU = User("tommy", "james@gmail.com",  tommyG)
             populatedTables!!.addUser(tommyU!!)
             assertEquals("0: ${jamesU}\n1: ${tommyU}", populatedTables!!.listAllUsers())
         }
@@ -145,7 +145,7 @@ class TableAPITest {
         @Test
         fun `test activedaymembers() `() {
             val sarahG = Table("sarah", true, false, false, true, false, true, false)
-            val sarahU = User("sarah", "sarah@gmail.com", "password456", sarahG)
+            val sarahU = User("sarah", "sarah@gmail.com",  sarahG)
             populatedTables!!.addUser(sarahU)
             assertEquals(1, populatedTables!!.activedaymembers("monday"))
             assertEquals(0, populatedTables!!.activedaymembers("tuesday"))
@@ -155,7 +155,7 @@ class TableAPITest {
             assertEquals(1, populatedTables!!.activedaymembers("saturday"))
             assertEquals(0, populatedTables!!.activedaymembers("sunday"))
             val tommyG = Table("tommy", false, false, false, false, false, true, true)
-            val tommyU = User("tommy", "james@gmail.com", "james111", tommyG)
+            val tommyU = User("tommy", "james@gmail.com", tommyG)
             populatedTables!!.addUser(tommyU!!)
             assertEquals(2, populatedTables!!.activedaymembers("saturday"))
             assertEquals(1, populatedTables!!.activedaymembers("sunday"))
@@ -173,7 +173,7 @@ class TableAPITest {
             assertEquals(1, populatedTables!!.inactivedaymemberss("saturday"))
             assertEquals(1, populatedTables!!.inactivedaymemberss("sunday"))
             val tommyG = Table("tommy", false, false, false, false, false, false, false)
-            val tommyU = User("tommy", "james@gmail.com", "james111", tommyG)
+            val tommyU = User("tommy", "james@gmail.com",  tommyG)
             populatedTables!!.addUser(tommyU!!)
             assertEquals(2, populatedTables!!.inactivedaymemberss("saturday"))
             assertEquals(2, populatedTables!!.inactivedaymemberss("sunday"))
