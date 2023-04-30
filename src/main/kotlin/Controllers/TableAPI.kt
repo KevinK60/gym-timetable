@@ -78,7 +78,7 @@ fun findUser(index: Int): User? {
 
 
 
-
+// tested
         fun listnmbtables(): Int {
         return tables.size
     }
@@ -111,7 +111,7 @@ fun findUser(index: Int): User? {
             .toInt()
     }
 
-
+// TESSTED
 
     fun inactivedaymemberss(day: String): Int {
         return users.stream()

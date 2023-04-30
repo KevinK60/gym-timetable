@@ -124,7 +124,6 @@ fun mainMenu() = ScannerInput.readNextInt(
         6. Count people not going on specific day
         7. List All gym schedules
         8. Numbers of people going to the gym
-        
         -----------------------------------------
         7. Save                                                                        
         8. load                                     
