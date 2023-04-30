@@ -63,6 +63,7 @@ fun findUser(index: Int): User? {
             users[index]
         } else null
     }
+    // List all tables tested
     fun listAllTables() {
         for (user in users) {
             println(user.timetable?.toString())

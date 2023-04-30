@@ -119,6 +119,13 @@ class TableAPITest {
 
     @Nested
     internal inner class ListAllUsers{
-
+        @Test
+        fun `test listAllTables() `() {
+            assertEquals("0: ${jamesU}", populatedTables!!.listAllUsers())
+            val tommyG = Table("tommy", false, false, false, false, false, false, false)
+             val  tommyU = User("tommy","james@gmail.com","james111", jamesG)
+            populatedTables!!.addUser(tommyU!!)
+            assertEquals("0: ${jamesU}\n1: ${tommyU}", populatedTables!!.listAllUsers())
+        }
     }
 }
