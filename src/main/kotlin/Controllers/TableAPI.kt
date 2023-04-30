@@ -51,9 +51,10 @@ class TableAPI(serializerType: Serializer) {
     // not tested
     fun noTables(): String =
         if (users.isEmpty()) "No users found"
-        else users.filter { it.timetable == null }.toString()
-
-
+        else users.filter { it.timetable == null }
+            .joinToString(separator = "\n") { user ->
+                users.indexOf(user).toString() + ": " + user.toString()
+            }
 
 
 
@@ -120,7 +121,7 @@ fun findUser(index: Int): User? {
             .toInt()
     }
 
-// TESSTED
+
 
     fun inactivedaymemberss(day: String): Int {
         return users.stream()
