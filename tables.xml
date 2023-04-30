@@ -1,3 +1,32 @@
 <object-stream>
-  <list/>
+  <list>
+    <Models.User>
+      <name>KE</name>
+      <email>KE</email>
+      <timetable>
+        <name>ke</name>
+        <monday>true</monday>
+        <tuesday>false</tuesday>
+        <wednesday>true</wednesday>
+        <thursday>false</thursday>
+        <friday>true</friday>
+        <saturday>true</saturday>
+        <sunday>false</sunday>
+      </timetable>
+    </Models.User>
+    <Models.User>
+      <name>joe</name>
+      <email>joe</email>
+      <timetable>
+        <name>y</name>
+        <monday>false</monday>
+        <tuesday>false</tuesday>
+        <wednesday>false</wednesday>
+        <thursday>false</thursday>
+        <friday>false</friday>
+        <saturday>false</saturday>
+        <sunday>false</sunday>
+      </timetable>
+    </Models.User>
+  </list>
 </object-stream>

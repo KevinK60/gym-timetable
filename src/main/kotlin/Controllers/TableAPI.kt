@@ -2,6 +2,7 @@ package Controllers
 import Models.Table
 import Models.User
 import persistence.Serializer
+
 import kotlin.collections.ArrayList
 class TableAPI(serializerType: Serializer) { /**
      The serializer used for storing and loading data. The serializer type is determined by the serializerType parameter
@@ -146,7 +147,7 @@ class TableAPI(serializerType: Serializer) { /**
             println(user.timetable?.toString())
         }
     }
-    /**
+     /**
     Determines whether the specified index is a valid index for the users list.
     An index is valid if it is greater than or equal to 0 and less than the size of the users
     list.
@@ -228,21 +229,31 @@ class TableAPI(serializerType: Serializer) { /**
             .count()
             .toInt()
     }
+
+    fun getTable(tableName: String?): Table? {
+        return tables.find { it.name == tableName }
+    }
+    fun getUser(user: User): User? {
+        return users.find { it.name == user.name }
+    }
     /**
      Returns the User object at the specified index in the list of users.
      Returns null if the index is invalid.
      @param index the index of the desired user
      @return the User object at the specified index, or null if the index is invalid
      */
+    fun updateTable(userId: Int, updateTable: Table) {
+        // Find the user with the matching user ID
+        val user = findUser(userId)
+
+        // Update the table if the user exists
+        user?.let { it.timetable = updateTable }
+    }
+
     fun findNote(index: Int): Table? {
         return if (isValidTableIndex(index, tables)) {
             tables[index]
         } else null
     }
-    fun addTabletoUser(index: Int, table: Table): Boolean {
-        return if (isValidUserIndex(index, users)) {
-            users[index].timetable = table
-            true
-        } else false
+
     }
-}

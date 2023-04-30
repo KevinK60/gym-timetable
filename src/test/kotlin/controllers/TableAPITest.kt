@@ -1,8 +1,8 @@
 import Controllers.TableAPI
-import persistence.XMLSerializer
+import java.io.File
 import Models.Table
 import Models.User
-import java.io.File
+import persistence.XMLSerializer
 
 import junit.framework.TestCase.assertEquals
 import org.junit.jupiter.api.Test
