@@ -48,7 +48,7 @@ class TableAPI(serializerType: Serializer) {
         return users.size
     }
 
-    // Search by Users name //
+    // Search by Users name // tested
     fun searchByName(searchString: String) =
         users.filter { user -> user.name.contains(searchString, ignoreCase = true) }
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }

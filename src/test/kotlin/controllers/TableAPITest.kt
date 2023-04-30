@@ -89,13 +89,20 @@ class TableAPITest {
         }
     }
     @Nested
-    internal inner class tested {
+    internal inner class SearchBy {
         @Test
         fun `searchByName `() {
 
-            val searchString = "tommy"
-            populatedTables
-            assertEquals(1, populatedTables!!.searchByName(searchString))
+            val searchString = "james"
+             val  expected ="0: "
+            assertEquals("0: ${jamesU}", populatedTables!!.searchByName(searchString))
+        }
+        @Test
+        fun `searchByEmail `() {
+
+            val searchString = "james@gmail.com"
+            val  expected ="0: "
+            assertEquals("0: ${jamesU}", populatedTables!!.searchByEmail(searchString))
         }
     }
     @Nested
@@ -109,4 +116,6 @@ class TableAPITest {
             assertEquals(null, populatedTables!!.findUser(2))
         }
     }
+
+
 }
