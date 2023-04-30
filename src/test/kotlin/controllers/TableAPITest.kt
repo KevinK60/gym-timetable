@@ -203,6 +203,7 @@ class TableAPITest {
     internal inner class noTables {
         @Test
         fun `test noTables() `() {
+            assertEquals("No users found", emptyTables!!.noTables())
            assertEquals("", populatedTables!!.noTables())
             jamesU!!.timetable = null
             assertEquals("0: $jamesU", populatedTables!!.noTables())
