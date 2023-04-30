@@ -48,6 +48,16 @@ class TableAPI(serializerType: Serializer) {
         return users.size
     }
 
+    // not tested
+    fun noTables(): String =
+        if (users.isEmpty()) "No users found"
+        else users.filter { it.timetable == null }
+            .joinToString(separator = "\n") { user ->
+                users.indexOf(user).toString() + ": " + user.toString()
+            }
+
+
+
     // Search by Users name // tested
     fun searchByName(searchString: String) =
         users.filter { user -> user.name.contains(searchString, ignoreCase = true) }
@@ -111,7 +121,7 @@ fun findUser(index: Int): User? {
             .toInt()
     }
 
-// TESSTED
+
 
     fun inactivedaymemberss(day: String): Int {
         return users.stream()
@@ -130,12 +140,20 @@ fun findUser(index: Int): User? {
             .count()
             .toInt()
     }
-
+// tested
     fun findNote(index: Int): Table? {
         return if (isValidTableIndex(index, tables)) {
             tables[index]
         } else null
     }
+
+    fun addTabletoUser(index: Int, table: Table): Boolean {
+        return if (isValidUserIndex(index, users)) {
+            users[index].timetable = table
+            true
+        } else false
+    }
+
 }
 
 

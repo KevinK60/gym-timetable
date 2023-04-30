@@ -14,12 +14,13 @@ class TableAPITest {
     private var jamesG: Table? = null
     private var jamesU: User? = null
     private var populatedTables: TableAPI? = TableAPI(XMLSerializer(File("Tables.xml")))
+    private var emptyTables: TableAPI? = TableAPI(XMLSerializer(File("Tables.xml")))
 
     @BeforeEach
     fun setup() {
         JoePerson1 = Table("joe", false, true, true, true, true, true, true)
         jamesG = Table("james", false, false, false, false, false, false, false)
-        jamesU = User("james", "james@gmail.com", "james111", jamesG)
+        jamesU = User("james", "james@gmail.com",  jamesG)
         populatedTables!!.addUser(jamesU!!)
 
     }
@@ -36,11 +37,11 @@ class TableAPITest {
         @Test
         fun `saving and loading an empty collection in XML doesn't crash app`() {
             // Saving an empty tables.XML file.
-            val storingTables = TableAPI(XMLSerializer(File("tables.xml")))
+            val storingTables = TableAPI(XMLSerializer(File("Tables.xml")))
             storingTables.store()
 
             //Loading the empty tables.xml file into a new object
-            val loadedTables = TableAPI(XMLSerializer(File("tables.xml")))
+            val loadedTables = TableAPI(XMLSerializer(File("Tables.xml")))
             loadedTables.load()
 
             //Comparing the source of the tables (storingNotes) with the XML loaded tables (loadedTables)
@@ -52,20 +53,20 @@ class TableAPITest {
         @Test
         fun `saving and loading an loaded collection in XML doesn't loose data`() {
             // Storing 3 notes to the notes.XML file.
-            val storingTables = TableAPI(XMLSerializer(File("tables.xml")))
+            val storingTables = TableAPI(XMLSerializer(File("Tables.xml")))
             storingTables.addTable(jamesG!!)
 
             storingTables.store()
 
             //Loading tables.xml into a different collection
-            val loadedTables = TableAPI(XMLSerializer(File("tables.xml")))
+            val loadedTables = TableAPI(XMLSerializer(File("Tables.xml")))
             loadedTables.load()
 
             //Comparing the source of the notes (storingNotes) with the XML loaded notes (loadedTables)
             Assertions.assertEquals(1, storingTables.listnmbtables())
             Assertions.assertEquals(0, loadedTables.listnmbtables())
 //            assertEquals(storingTables.listnmbtables(), loadedTables.listnmbtables())
-            assertEquals(storingTables.findNote(0), loadedTables.findNote(0))
+            assertEquals(storingTables.findNote(1), loadedTables.findNote(0))
             assertEquals(storingTables.findNote(1), loadedTables.findNote(1))
             assertEquals(storingTables.findNote(1), loadedTables.findNote(2))
         }
@@ -88,7 +89,7 @@ class TableAPITest {
 
             assertEquals(1, populatedTables!!.getTotalUsers())
             val newTable = Table("tommy", false, false, false, false, false, false, false)
-            val jamesD = User("tommy", "tommy@gmail.com", "tommy111", newTable)
+            val jamesD = User("tommy", "tommy@gmail.com", newTable)
             populatedTables!!.addUser(jamesD)
             assertEquals(2, populatedTables!!.getTotalUsers())
         }
@@ -130,9 +131,10 @@ class TableAPITest {
     internal inner class ListAllUsers {
         @Test
         fun `test listAllTables() `() {
+            assertEquals("No users found", emptyTables!!.listAllUsers())
             assertEquals("0: ${jamesU}", populatedTables!!.listAllUsers())
             val tommyG = Table("tommy", false, false, false, false, false, true, true)
-            val tommyU = User("tommy", "james@gmail.com", "james111", tommyG)
+            val tommyU = User("tommy", "james@gmail.com",  tommyG)
             populatedTables!!.addUser(tommyU!!)
             assertEquals("0: ${jamesU}\n1: ${tommyU}", populatedTables!!.listAllUsers())
         }
@@ -142,17 +144,20 @@ class TableAPITest {
     internal inner class activedaymembers {
         @Test
         fun `test activedaymembers() `() {
-            assertEquals(0, populatedTables!!.activedaymembers("monday"))
+            val sarahG = Table("sarah", true, false, false, true, false, true, false)
+            val sarahU = User("sarah", "sarah@gmail.com",  sarahG)
+            populatedTables!!.addUser(sarahU)
+            assertEquals(1, populatedTables!!.activedaymembers("monday"))
             assertEquals(0, populatedTables!!.activedaymembers("tuesday"))
             assertEquals(0, populatedTables!!.activedaymembers("wednesday"))
-            assertEquals(0, populatedTables!!.activedaymembers("thursday"))
+            assertEquals(1, populatedTables!!.activedaymembers("thursday"))
             assertEquals(0, populatedTables!!.activedaymembers("friday"))
-            assertEquals(0, populatedTables!!.activedaymembers("saturday"))
+            assertEquals(1, populatedTables!!.activedaymembers("saturday"))
             assertEquals(0, populatedTables!!.activedaymembers("sunday"))
             val tommyG = Table("tommy", false, false, false, false, false, true, true)
-            val tommyU = User("tommy", "james@gmail.com", "james111", tommyG)
+            val tommyU = User("tommy", "james@gmail.com", tommyG)
             populatedTables!!.addUser(tommyU!!)
-            assertEquals(1, populatedTables!!.activedaymembers("saturday"))
+            assertEquals(2, populatedTables!!.activedaymembers("saturday"))
             assertEquals(1, populatedTables!!.activedaymembers("sunday"))
 
 
@@ -168,7 +173,7 @@ class TableAPITest {
             assertEquals(1, populatedTables!!.inactivedaymemberss("saturday"))
             assertEquals(1, populatedTables!!.inactivedaymemberss("sunday"))
             val tommyG = Table("tommy", false, false, false, false, false, false, false)
-            val tommyU = User("tommy", "james@gmail.com", "james111", tommyG)
+            val tommyU = User("tommy", "james@gmail.com",  tommyG)
             populatedTables!!.addUser(tommyU!!)
             assertEquals(2, populatedTables!!.inactivedaymemberss("saturday"))
             assertEquals(2, populatedTables!!.inactivedaymemberss("sunday"))
@@ -194,4 +199,17 @@ class TableAPITest {
             assertEquals(null, populatedTables!!.findUser(10))
         }
     }
+    @Nested
+    internal inner class noTables {
+        @Test
+        fun `test noTables() `() {
+            assertEquals("No users found", emptyTables!!.noTables())
+           assertEquals("", populatedTables!!.noTables())
+            jamesU!!.timetable = null
+            assertEquals("0: $jamesU", populatedTables!!.noTables())
+
+
+        }
+    }
+
 }

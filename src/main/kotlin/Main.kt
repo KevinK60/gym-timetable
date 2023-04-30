@@ -4,6 +4,7 @@ import Models.User
 import mu.KotlinLogging
 import persistence.XMLSerializer
 import utils.ScannerInput
+import utils.ScannerInput.readNextInt
 import utils.ScannerInput.readNextLine
 import java.io.File
 private val logger = KotlinLogging.logger {}
@@ -21,6 +22,7 @@ fun runMenu() {
             7 ->ListAlltabless()
             8 -> nmboftables()
             9 -> findUser()
+            10 -> addTabletoUser()
             100 -> save()
             101 -> load()
 
@@ -84,8 +86,7 @@ fun listAllUsers() {
 fun createUser() {
     val name = readNextLine("Enter your name: ")
     val email = readNextLine("Enter your email: ")
-    val fullName = readNextLine("Enter your full name: ")
-    val user = User(name, email, fullName, null)
+    val user = User(name, email,  null)
     TableAPI.addUser(user)
     println("User created: $user")
     println("Would you like to add a timetable? (y/n)")
@@ -124,6 +125,8 @@ fun mainMenu() = ScannerInput.readNextInt(
         6. Count people not going on specific day
         7. List All gym schedules
         8. Numbers of people going to the gym
+        9- Add a gym schedule to a user
+        10 Add a gym schedule to a user
         -----------------------------------------
         7. Save                                                                        
         8. load                                     
@@ -195,4 +198,38 @@ fun load() {
     } catch (e: Exception) {
         System.err.println("Error reading from file: $e")
     }
+
+
+
 }
+// 10
+fun addTabletoUser() {
+
+        println(TableAPI.noTables())
+        println("what is the name of the user you want to add a table to")
+        val name = readNextInt("enter the id of the user you want to add a table to")
+        if (TableAPI.findUser(name) != null) {
+            val user = TableAPI.findUser(name)
+            if (user != null) {
+                val timetableName = readNextLine("Enter a name for your gym schedule: ")
+                val monday = readNextLine("Is Monday a workout day for you? (y/n)") == "y"
+                val tuesday = readNextLine("Is Tuesday a workout day for you? (y/n)") == "y"
+                val wednesday = readNextLine("Is Wednesday a workout day for you? (y/n)") == "y"
+                val thursday = readNextLine("Is Thursday a workout day for you? (y/n)") == "y"
+                val friday = readNextLine("Is Friday a workout day for you? (y/n)") == "y"
+                val saturday = readNextLine("Is Saturday a workout day for you? (y/n)") == "y"
+                val sunday = readNextLine("Is Sunday a workout day for you? (y/n)") == "y"
+
+                val gymSchedule = Table(timetableName, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
+
+                user?.timetable = gymSchedule
+            }
+        } else {
+            println("there is no user with that id")
+        }
+    }
+
+
+
+
+
