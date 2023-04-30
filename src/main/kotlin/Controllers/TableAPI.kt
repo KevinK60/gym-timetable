@@ -52,12 +52,12 @@ class TableAPI(serializerType: Serializer) {
     fun searchByName(searchString: String) =
         users.filter { user -> user.name.contains(searchString, ignoreCase = true) }
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }
-
+  // Search by Users email // tested
     fun searchByEmail(searchString: String) =
         users.filter { user -> user.email.contains(searchString, ignoreCase = true) }
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }
 
-    // Search by User index
+    // find user by index // tested
 fun findUser(index: Int): User? {
         return if (isValidUserIndex(index, users)) {
             users[index]

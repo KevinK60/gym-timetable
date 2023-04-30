@@ -117,5 +117,8 @@ class TableAPITest {
         }
     }
 
+    @Nested
+    internal inner class ListAllUsers{
 
+    }
 }
