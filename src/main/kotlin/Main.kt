@@ -60,7 +60,7 @@ fun countinactiveppl() {
 }
 
 fun findUser() {
-    val name =  ScannerInput.readNextInt("Enter the id of the user you want to find: ")
+    val name =  readNextInt("Enter the id of the user you want to find: ")
      println(TableAPI.findUser(name))
 
 }
@@ -111,7 +111,7 @@ fun createUser() {
     }
 }
 
-fun mainMenu() = ScannerInput.readNextInt(
+fun mainMenu() = readNextInt(
     """ 
         ---------------------------------------
         1. Add user
@@ -146,7 +146,7 @@ fun Searchmenu()
 {
     if(TableAPI.getTotalUsers() > 0)
     {
-        val option = ScannerInput.readNextInt(
+        val option = readNextInt(
             """
         ------------------------------
         this is the user search menu
@@ -222,7 +222,7 @@ fun addTabletoUser() {
 
                 val gymSchedule = Table(timetableName, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
 
-                user?.timetable = gymSchedule
+                user.timetable = gymSchedule
             }
         } else {
             println("there is no user with that id")
