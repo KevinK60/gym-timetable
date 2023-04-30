@@ -43,12 +43,12 @@ class TableAPI(serializerType: Serializer) {
             users.indexOf(User).toString() + ": " + User.toString()
         }
 
-    // Get total users
+    // Get total users // tested
     fun getTotalUsers(): Int {
         return users.size
     }
 
-    // Search by Users name
+    // Search by Users name //
     fun searchByName(searchString: String) =
         users.filter { user -> user.name.contains(searchString, ignoreCase = true) }
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }
@@ -57,11 +57,20 @@ class TableAPI(serializerType: Serializer) {
         users.filter { user -> user.email.contains(searchString, ignoreCase = true) }
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }
 
-
+    // Search by User index
+fun findUser(index: Int): User? {
+        return if (isValidUserIndex(index, users)) {
+            users[index]
+        } else null
+    }
     fun listAllTables() {
         for (user in users) {
             println(user.timetable?.toString())
         }
+    }
+    fun isValidUserIndex(index: Int, users: List<Any>): Boolean {
+       return (index >= 0 && index < users.size)
+
     }
 
 
