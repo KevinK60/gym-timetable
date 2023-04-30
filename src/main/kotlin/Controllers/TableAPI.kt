@@ -43,32 +43,42 @@ class TableAPI(serializerType: Serializer) {
             users.indexOf(User).toString() + ": " + User.toString()
         }
 
-    // Get total users
+    // Get total users // tested
     fun getTotalUsers(): Int {
         return users.size
     }
 
-    // Search by Users name
+    // Search by Users name // tested
     fun searchByName(searchString: String) =
         users.filter { user -> user.name.contains(searchString, ignoreCase = true) }
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }
-
+  // Search by Users email // tested
     fun searchByEmail(searchString: String) =
         users.filter { user -> user.email.contains(searchString, ignoreCase = true) }
             .joinToString(separator = "\n") { user -> users.indexOf(user).toString() + ": " + user.toString() }
 
-
+    // find user by index // tested
+fun findUser(index: Int): User? {
+        return if (isValidUserIndex(index, users)) {
+            users[index]
+        } else null
+    }
+    // List all tables tested
     fun listAllTables() {
         for (user in users) {
             println(user.timetable?.toString())
         }
     }
+    fun isValidUserIndex(index: Int, users: List<Any>): Boolean {
+       return (index >= 0 && index < users.size)
+
+    }
 
 
 
 
 
-
+// tested
         fun listnmbtables(): Int {
         return tables.size
     }
@@ -101,7 +111,7 @@ class TableAPI(serializerType: Serializer) {
             .toInt()
     }
 
-
+// TESSTED
 
     fun inactivedaymemberss(day: String): Int {
         return users.stream()

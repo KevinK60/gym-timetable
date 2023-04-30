@@ -20,6 +20,7 @@ fun runMenu() {
             6 -> countinactiveppl()
             7 ->ListAlltabless()
             8 -> nmboftables()
+            9 -> findUser()
             100 -> save()
             101 -> load()
 
@@ -57,6 +58,8 @@ fun countinactiveppl() {
 }
 
 fun findUser() {
+    val name =  ScannerInput.readNextInt("Enter the id of the user you want to find: ")
+     println(TableAPI.findUser(name))
 
 }
 
@@ -121,7 +124,6 @@ fun mainMenu() = ScannerInput.readNextInt(
         6. Count people not going on specific day
         7. List All gym schedules
         8. Numbers of people going to the gym
-        
         -----------------------------------------
         7. Save                                                                        
         8. load                                     
