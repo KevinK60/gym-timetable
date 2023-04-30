@@ -18,7 +18,7 @@ fun runMenu() {
             4 -> Searchmenu()
             5 -> CountPplDay()
             6 -> countinactiveppl()
-            7 ->ListAlltabless()
+            7 -> ListAlltabless()
             8 -> nmboftables()
             9 -> findUser()
             10 -> addTabletoUser()
@@ -143,25 +143,25 @@ fun createUser() {
 
 fun mainMenu() = readNextInt(
     """ 
-        ---------------------------------------
+       ━──━──━──━──━──━──━──━──━──━──━──━──━──━──━
         1. Add user
         2. List All users
         3. Get Total Users
-        ---------------------------------------
+        ━──━──━──━──━──━──━──━──━──━──━──━──━──━──
         4. Search Menu
-        ---------------------------------------
+        ━──━──━──━──━──━──━──━──━──━──━──━──━──━──
         Gym Schedules
-        5. Count people going on specific day
-        6. Count people not going on specific day
-        7. List All gym schedules
-        8. Numbers of people going to the gym
-        9- Add a gym schedule to a user
-        10 Add a gym schedule to a user
+        5. - Count people going on specific day
+        6. - Count people not going on specific day
+        7. - List All gym schedules
+        8  - Numbers of people going to the gym
+        9  - find a user by id
+        10 - Add a gym schedule to a user
         12 - change a day in a gym schedule
-        -----------------------------------------
-        7. Save                                                                        
+        ━──━──━──━──━──━──━──━──━──━──━──━──━──━──
+        7  Save                                                                        
         8. load                                     
-        -----------------------------------------
+        ━──━──━──━──━──━──━──━──━──━──━──━──━──━──
          >your option      
          """.trimMargin("   >")
 )
